@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    // Initialize Header Glass Tabs
+    initGlassTabs('#headerGlassTrack');
+
     $('#menu').click(function() {
         $(this).toggleClass('fa-times');
         $('.navbar').toggleClass('nav-toggle');
@@ -20,7 +23,7 @@ $(document).ready(function() {
 document.addEventListener('visibilitychange',
     function() {
         if (document.visibilityState === "visible") {
-            document.title = "Projects | Portfolio Jigar Sable";
+            document.title = "Projects | Portfolio Kishore Korada";
             $("#favicon").attr("href", "/assets/images/favicon.png");
         } else {
             document.title = "Come Back To Portfolio";
@@ -90,13 +93,114 @@ function showProjects(projects) {
         }
     });
 
-    // filter items on button click
-    $('.button-group').on('click', 'button', function() {
-        $('.button-group').find('.is-checked').removeClass('is-checked');
-        $(this).addClass('is-checked');
+    // Isotope button filter
+    $('#filters').on('click', 'button', function() {
         var filterValue = $(this).attr('data-filter');
         $grid.isotope({ filter: filterValue });
+        $('#filters button').removeClass('is-checked');
+        $(this).addClass('is-checked');
     });
+}
+
+/* ============================================================
+   Liquid Glass Tabs Component Engine (Scrolltide Physics)
+   ============================================================ */
+function initGlassTabs(trackSelector, onTabChange) {
+    const track = document.querySelector(trackSelector);
+    if (!track) return null;
+
+    const lens = track.querySelector('.glass-lens');
+    const tabs = track.querySelectorAll('.glass-tab');
+    if (!lens || !tabs.length) return null;
+
+    let currentIndex = 0;
+    let currentX = 0;
+
+    function moveToTab(targetTab, animate = true) {
+        if (!targetTab) return;
+
+        if (window.innerWidth <= 768) {
+            tabs.forEach(t => {
+                t.classList.remove('active', 'is-active', 'is-checked');
+                t.setAttribute('aria-selected', 'false');
+            });
+            targetTab.classList.add('active', 'is-active', 'is-checked');
+            targetTab.setAttribute('aria-selected', 'true');
+            if (typeof onTabChange === 'function') onTabChange(targetTab);
+            return;
+        }
+
+        const trackRect = track.getBoundingClientRect();
+        const tabRect = targetTab.getBoundingClientRect();
+        const targetX = tabRect.left - trackRect.left;
+        const targetWidth = tabRect.width;
+
+        const newIndex = Array.from(tabs).indexOf(targetTab);
+        const movingRight = newIndex >= currentIndex;
+        const isIndexChange = newIndex !== currentIndex;
+
+        tabs.forEach(t => {
+            t.classList.remove('active', 'is-active', 'is-checked');
+            t.setAttribute('aria-selected', 'false');
+        });
+        targetTab.classList.add('active', 'is-active', 'is-checked');
+        targetTab.setAttribute('aria-selected', 'true');
+
+        if (animate && isIndexChange) {
+            lens.classList.remove('wobbling-right', 'wobbling-left');
+            void lens.offsetWidth; // force reflow
+
+            lens.style.setProperty('--start-x', `${currentX}px`);
+            lens.style.setProperty('--target-x', `${targetX}px`);
+            const transitX = movingRight 
+                ? targetX - (tabRect.width * 0.22) 
+                : targetX + (tabRect.width * 0.22);
+            lens.style.setProperty('--transit-x', `${transitX}px`);
+
+            lens.style.width = `${targetWidth}px`;
+            lens.classList.add(movingRight ? 'wobbling-right' : 'wobbling-left');
+
+            const glint = lens.querySelector('.glass-lens-glint');
+            if (glint) {
+                glint.style.filter = 'brightness(1.6) contrast(1.3)';
+                setTimeout(() => { if (glint) glint.style.filter = ''; }, 580);
+            }
+        } else {
+            lens.style.transform = `translateX(${targetX}px)`;
+            lens.style.width = `${targetWidth}px`;
+        }
+
+        currentX = targetX;
+        currentIndex = newIndex;
+
+        if (typeof onTabChange === 'function') {
+            onTabChange(targetTab);
+        }
+    }
+
+    const initialActive = track.querySelector('.glass-tab.active, .glass-tab.is-active') || tabs[0];
+    setTimeout(() => moveToTab(initialActive, false), 80);
+    window.addEventListener('load', () => moveToTab(initialActive, false));
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                moveToTab(this, true);
+            }
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        const active = track.querySelector('.glass-tab.active, .glass-tab.is-active') || tabs[0];
+        if (active) moveToTab(active, false);
+    });
+
+    return {
+        moveToTab,
+        track,
+        lens
+    };
 }
 
 getProjects().then(data => {

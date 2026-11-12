@@ -1,67 +1,78 @@
 [
-    {
-        "name": "HTML5",
-        "icon": "https://img.icons8.com/color/48/000000/html-5--v1.png"
-    },
-    {
-        "name": "CSS3",
-        "icon": "https://img.icons8.com/color/48/000000/css3.png"
-    },
-    {
-        "name": "JavaScript",
-        "icon": "https://img.icons8.com/color/48/000000/javascript--v1.png"
-    },
-        {
-        "name": "ReactJS",
-        "icon": "https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/000000/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png"
-    },
-
-    {
-        "name": "TailwindCSS",
-        "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/48px-Tailwind_CSS_Logo.png"
-    },
-    {
-        "name": "Bootstrap",
-        "icon": "https://img.icons8.com/color/48/000000/bootstrap.png"
-    },
-    {
-        "name": "Java",
-        "icon": "https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png"
-    },
-
-    {
-        "name": "Python",
-        "icon": "https://img.icons8.com/color/48/000000/python--v1.png"
-    },
-    {
-        "name": "C++",
-        "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"
-    },
-    {
-        "name": "MongoDB",
-        "icon": "https://img.icons8.com/color/48/000000/mongodb.png"
-    },
-    {
-        "name": "MySQL",
-        "icon": "https://img.icons8.com/color/48/000000/mysql-logo.png"
-    },
-
-    {
-        "name": "Git VCS",
-        "icon": "https://img.icons8.com/color/48/000000/git.png"
-    },
-    {
-        "name": "GitHub",
-        "icon": "https://img.icons8.com/glyph-neue/48/ffffff/github.png"
-    },
-
-    {
-        "name": "NumPy",
-        "icon": "https://img.icons8.com/color/48/000000/numpy.png"
-    },
-    {
-        "name": "Pandas",
-        "icon": "https://img.icons8.com/color/48/000000/pandas.png"
-    }
-
+  {
+    "name": "Java (11+)",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+  },
+  {
+    "name": "Spring Boot",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
+  },
+  {
+    "name": "Spring MVC",
+    "icon": "https://img.icons8.com/color/48/000000/spring-logo.png"
+  },
+  {
+    "name": "Hibernate / JPA",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hibernate/hibernate-original.svg"
+  },
+  {
+    "name": "REST APIs",
+    "icon": "https://img.icons8.com/color/48/000000/api-settings.png"
+  },
+  {
+    "name": "Microservices",
+    "icon": "https://img.icons8.com/color/48/000000/cloud-lighting.png"
+  },
+  {
+    "name": "MySQL",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+  },
+  {
+    "name": "Relational SQL",
+    "icon": "https://img.icons8.com/color/48/000000/sql.png"
+  },
+  {
+    "name": "JWT & OAuth2",
+    "icon": "https://img.icons8.com/color/48/000000/security-checked.png"
+  },
+  {
+    "name": "JUnit & Mockito",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg"
+  },
+  {
+    "name": "Postman",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-plain.svg"
+  },
+  {
+    "name": "Swagger / OpenAPI",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg"
+  },
+  {
+    "name": "Apache Maven",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg"
+  },
+  {
+    "name": "Git & GitHub",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+  },
+  {
+    "name": "IntelliJ IDEA",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg"
+  },
+  {
+    "name": "Spring Tool Suite",
+    "icon": "https://img.icons8.com/color/48/000000/code-fork.png"
+  },
+  {
+    "name": "Apache Tomcat",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tomcat/tomcat-original.svg"
+  },
+  {
+    "name": "C Language",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
+  },
+  {
+    "name": "DSA & OOP",
+    "icon": "https://img.icons8.com/color/48/000000/source-code.png"
+  }
 ]

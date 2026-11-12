@@ -1,223 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link id='favicon' rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-png">
 
-    <title>Experience | Portfolio Jigar Sable</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/experience/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    crossorigin="anonymous" />
+  <link id='favicon' rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-png">
+
+  <title>Experience | Portfolio Kishore Korada</title>
 </head>
+
 <body oncontextmenu="return false">
 
-<!-- navbar starts -->
-<header>
-        <a href="/" class="logo"><i class="fab fa-node-js"></i> Jigar</a>
+  <!-- navbar starts -->
+  <header>
+    <a href="/" class="logo"><i class="fab fa-java"></i> Kishore Korada</a>
 
-        <div id="menu" class="fas fa-bars"></div>
-        <nav class="navbar">
-            <ul>
-            <li><a href="/#home">Home</a></li>
-            <li><a href="/#about">About</a></li>
-            <li><a href="/#skills">Skills</a></li>
-            <li><a href="/#education">Education</a></li>
-            <li><a href="/#work">Work</a></li>
-            <li><a class="active" href="/#experience">Experience</a></li>
-            <li><a href="/#contact">Contact</a></li>
+    <div id="menu" class="fas fa-bars"></div>
+    <nav class="navbar">
+      <ul class="header-glass-track" id="headerGlassTrack">
+        <div class="glass-lens" id="headerGlassLens" aria-hidden="true">
+          <div class="glass-lens-glint"></div>
+        </div>
+        <li><a class="glass-tab" href="/#home"><span class="tab-label">Home</span></a></li>
+        <li><a class="glass-tab" href="/#about"><span class="tab-label">About</span></a></li>
+        <li><a class="glass-tab" href="/#skills"><span class="tab-label">Skills</span></a></li>
+        <li><a class="glass-tab" href="/#education"><span class="tab-label">Education</span></a></li>
+        <li><a class="glass-tab" href="/#work"><span class="tab-label">Projects</span></a></li>
+        <li><a class="glass-tab active" href="/experience"><span class="tab-label">Experience</span></a></li>
+        <li><a class="glass-tab" href="/#achievements"><span class="tab-label">Achievements</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- navbar ends -->
+
+  <!-- experience section starts -->
+  <section class="experience" id="experience">
+
+    <h2 class="heading"><i class="fas fa-briefcase"></i> Work <span>Experience</span></h2>
+    <div class="quote">
+      <span>"Every experience in your life is orchestrated to teach you something you need to know to move
+        forward."</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="container right">
+        <div class="content">
+          <div class="tag">
+            <h2>Infosys Springboard 7.0</h2>
+          </div>
+          <div class="desc">
+            <h3>Java Full Stack Developer Intern</h3>
+            <p><i class="fas fa-calendar-alt"></i> June 2026 - Aug 2026</p>
+            <p style="margin-top: 8px;"><strong>Tech Stack:</strong> Java, Spring Boot, React.js, MySQL, Spring
+              Security, JWT, OAuth2</p>
+            <ul
+              style="margin-top: 10px; text-align: left; list-style-type: disc; padding-left: 20px; font-size: 1.35rem; line-height: 1.6;">
+              <li>Implemented 20+ RESTful API endpoints and backend features for <b>TripNest</b>, a full-stack travel
+                planning platform, writing clean, maintainable Java code across trip, itinerary, expense, collaboration,
+                and user modules using Java, Spring Boot, React, and MySQL.</li>
+              <li>Enhanced destination discovery with AI-assisted recommendations and AI-powered trip notes that
+                automatically convert location activity into structured trip stories, reducing manual trip documentation
+                by 70%.</li>
+              <li>Applied data-structure and algorithmic thinking to optimize SQL queries and Hibernate/JPA data models
+                for trip and user management, improving backend performance and reliability.</li>
+              <li>Collaborated with cross-functional teammates in an Agile environment, using Git-based version control
+                (branching, pull requests) and code reviews to deliver secure, customer-focused features.</li>
             </ul>
-        </nav>
-</header>
-<!-- navbar ends -->
 
-<!-- experience section starts -->
-<section class="experience" id="experience">
+            <!-- Action Buttons Container -->
+            <div class="exp-actions-wrapper">
+              <!-- View Full Details button: reveals project images -->
+              <button type="button" class="exp-action-btn view-details-btn" id="toggleDetailsBtn" aria-expanded="false"
+                aria-controls="projectGallerySection">
+                <i class="fas fa-images"></i>
+                <span id="toggleBtnText">View Full Details</span>
+                <i class="fas fa-chevron-down toggle-icon" id="toggleIcon"></i>
+              </button>
 
-  <h2 class="heading"><i class="fas fa-briefcase"></i> Experience</h2>
-  <div class="quote">
-      <span>every experience in your life is being orchestrated to teach you something you need to know to move forward.</span>
-  </div>
+              <!-- Two buttons below View Full Details: Certificate & Drive Link -->
+              <div class="exp-sub-actions">
+                <a href="/experience/infosys%20internship/Certificate/Infosys%20Internship%20Certificate.pdf"
+                  target="_blank" rel="noopener noreferrer" class="exp-action-btn certificate-btn"
+                  title="View Internship Certificate">
+                  <i class="fas fa-certificate"></i>
+                  <span>Certificate</span>
+                  <i class="fas fa-external-link-alt sub-icon"></i>
+                </a>
 
-  <div class="timeline">
-
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>Self Employed</h2>
-        </div>
-        <div class="desc">
-            <h3>Full Stack Developer</h3>
-            <p>Oct 2021 - present</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container right">
-        <div class="content">
-          <div class="tag">
-            <h2>DevIncept (Top Contributor)</h2>
-          </div>
-          <div class="desc">
-              <h3>DCP 2021 Contributor | Open Source Program</h3>
-              <p>July 2021 - October 2021</p>
+                <a href="https://drive.google.com/file/d/1F55cmZD9jLZC2eVXpPfLOq77rVlOdqHs/view?usp=drivesdk"
+                  target="_blank" rel="noopener noreferrer" class="exp-action-btn drive-btn" id="projectDriveBtn"
+                  title="Watch Project Video on Google Drive">
+                  <i class="fab fa-google-drive"></i>
+                  <span>Project Video (Drive)</span>
+                  <i class="fas fa-external-link-alt sub-icon"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="container left">
-        <div class="content">
-          <div class="tag">
-            <h2>LetsGrowMore Summer of Code</h2>
+    </div>
+
+    <!-- Project Screenshots Showcase Section (Toggled by View Full Details) -->
+    <div id="projectGallerySection" class="project-gallery-section" style="display: none;">
+      <div class="gallery-card">
+        <div class="gallery-header">
+          <div class="gallery-badge"><i class="fas fa-laptop-code"></i> TripNest Project Showcase</div>
+          <h3 class="gallery-title">TripNest Project Screenshots & System Features</h3>
+          <p class="gallery-subtitle">High-fidelity screenshots of TripNest: destination discovery, AI trip
+            recommendations, itinerary builder, expense tracker, and Spring Boot backend integration. Click any image to
+            view in full screen.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- 1 -->
+          <div class="gallery-item" data-index="0"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20222706.png"
+            data-title="TripNest - Platform Overview & Discovery">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20222706.png"
+                alt="TripNest Screenshot 1" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Platform Overview</h4>
+              <span class="img-tag">Screenshot 1</span>
+            </div>
           </div>
-          <div class="desc">
-              <h3>LGM-SOC'21 Participant | Open Source Program</h3>
-              <p>June 2021 - August 2021</p>
+
+          <!-- 2 -->
+          <div class="gallery-item" data-index="1"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20222812.png"
+            data-title="TripNest - Trip Itinerary & Schedule">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20222812.png"
+                alt="TripNest Screenshot 2" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Itinerary Planner</h4>
+              <span class="img-tag">Screenshot 2</span>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="gallery-item" data-index="2"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20222952.png"
+            data-title="TripNest - Destination Explorer">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20222952.png"
+                alt="TripNest Screenshot 3" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Destination Explorer</h4>
+              <span class="img-tag">Screenshot 3</span>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="gallery-item" data-index="3"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223010.png"
+            data-title="TripNest - AI Recommendations">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223010.png"
+                alt="TripNest Screenshot 4" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>AI Recommendations</h4>
+              <span class="img-tag">Screenshot 4</span>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="gallery-item" data-index="4"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223213.png"
+            data-title="TripNest - Activity Details & Notes">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223213.png"
+                alt="TripNest Screenshot 5" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Activity Notes</h4>
+              <span class="img-tag">Screenshot 5</span>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="gallery-item" data-index="5"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223229.png"
+            data-title="TripNest - Trip Stories & Documentation">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223229.png"
+                alt="TripNest Screenshot 6" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Trip Stories</h4>
+              <span class="img-tag">Screenshot 6</span>
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div class="gallery-item" data-index="6"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223307.png"
+            data-title="TripNest - Expense Management & Splitting">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223307.png"
+                alt="TripNest Screenshot 7" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Expense Splitting</h4>
+              <span class="img-tag">Screenshot 7</span>
+            </div>
+          </div>
+
+          <!-- 8 -->
+          <div class="gallery-item" data-index="7"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223433.png"
+            data-title="TripNest - RESTful API Architecture">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223433.png"
+                alt="TripNest Screenshot 8" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Backend REST APIs</h4>
+              <span class="img-tag">Screenshot 8</span>
+            </div>
+          </div>
+
+          <!-- 9 -->
+          <div class="gallery-item" data-index="8"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223457.png"
+            data-title="TripNest - User Authentication & JWT Security">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223457.png"
+                alt="TripNest Screenshot 9" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Auth & Security</h4>
+              <span class="img-tag">Screenshot 9</span>
+            </div>
+          </div>
+
+          <!-- 10 -->
+          <div class="gallery-item" data-index="9"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223516.png"
+            data-title="TripNest - Database & Query Optimization">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223516.png"
+                alt="TripNest Screenshot 10" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Database & Queries</h4>
+              <span class="img-tag">Screenshot 10</span>
+            </div>
+          </div>
+
+          <!-- 11 -->
+          <div class="gallery-item" data-index="10"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223534.png"
+            data-title="TripNest - Collaboration & Sharing">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223534.png"
+                alt="TripNest Screenshot 11" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Team Collaboration</h4>
+              <span class="img-tag">Screenshot 11</span>
+            </div>
+          </div>
+
+          <!-- 12 -->
+          <div class="gallery-item" data-index="11"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223600.png"
+            data-title="TripNest - Trip Analytics & Metrics">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223600.png"
+                alt="TripNest Screenshot 12" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>Trip Metrics</h4>
+              <span class="img-tag">Screenshot 12</span>
+            </div>
+          </div>
+
+          <!-- 13 -->
+          <div class="gallery-item" data-index="12"
+            data-src="/experience/infosys%20internship/Screenshot%202026-11-12%20223903.png"
+            data-title="TripNest - UI Component Integration">
+            <div class="gallery-thumb-wrapper">
+              <img src="/experience/infosys%20internship/Screenshot%202026-11-12%20223903.png"
+                alt="TripNest Screenshot 13" loading="lazy">
+              <div class="gallery-overlay">
+                <span><i class="fas fa-search-plus"></i> View Full Image</span>
+              </div>
+            </div>
+            <div class="gallery-info">
+              <h4>UI Integration</h4>
+              <span class="img-tag">Screenshot 13</span>
+            </div>
           </div>
         </div>
       </div>
-
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>Mapstreak Flyseas</h2>
-        </div>
-        <div class="desc">
-            <h3>Web Developer | Internship</h3>
-            <p>June 2021 - Dec 2021</p>
-        </div>
-      </div>
     </div>
 
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>The Spark Foundation</h2>
-        </div>
-        <div class="desc">
-            <h3>Website Developer | Internship</h3>
-            <p>May 2021 - June 2021</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>The Spark Foundation</h2>
-        </div>
-        <div class="desc">
-            <h3>Mobile Application Developer | Internship</h3>
-            <p>April 2021 - May 2021</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container left">
-      <div class="content">
-        <div class="tag">
-          <h2>Frshr Technologies</h2>
-        </div>
-        <div class="desc">
-            <h3>Wordpress Developer | Internship</h3>
-            <p>April 2021 - April 2021</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container right">
-      <div class="content">
-        <div class="tag">
-          <h2>WonderingBlog</h2>
-        </div>
-        <div class="desc">
-            <h3>Web Development & SEO | Internship</h3>
-            <p>March 2021 - April 2021</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container left">
-        <div class="content">
-          <div class="tag">
-            <h2>Hacktoberfest 2020</h2>
-          </div>
-          <div class="desc">
-              <h3>Contributor | Open Source Program</h3>
-              <p>October 2020 - November 2020</p>
+    <!-- Lightbox Modal -->
+    <div id="imageLightboxModal" class="lightbox-modal" aria-hidden="true">
+      <div class="lightbox-overlay" id="lightboxOverlay"></div>
+      <div class="lightbox-container">
+        <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close modal">&times;</button>
+        <button type="button" class="lightbox-prev" id="lightboxPrev" aria-label="Previous image"><i
+            class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+          <img id="lightboxImg" src="" alt="TripNest Screenshot Preview" />
+          <div class="lightbox-caption">
+            <span id="lightboxTitle">TripNest Screenshot</span>
+            <span id="lightboxCounter">1 / 13</span>
           </div>
         </div>
+        <button type="button" class="lightbox-next" id="lightboxNext" aria-label="Next image"><i
+            class="fas fa-chevron-right"></i></button>
       </div>
+    </div>
 
-  </div>
-
-  <div class="morebtn">
-    <a href="/#experience" class="btn">
+    <div class="morebtn">
+      <a href="/#experience" class="btn">
         <i class="fas fa-arrow-left"></i>
         <span>Back to Home</span>
-  </a>
-  </div>
+      </a>
+    </div>
 
-</div>
-</section>
-<!-- experience section ends -->
+  </section>
+  <!-- experience section ends -->
 
-<!-- footer section starts -->
-<section class="footer">
+  <!-- footer section starts -->
+  <section class="footer">
 
-  <div class="box-container">
+    <div class="box-container">
 
       <div class="box">
-          <h3>Jigar's Portfolio</h3>
-          <p>Thank you for visiting my personal portfolio website. Connect with me over socials. <br/> <br/> Keep Rising 🚀. Connect with me over live chat!</p>
+        <h3>Kishore's Portfolio</h3>
+        <p>Thank you for visiting my personal portfolio website. Connect with me over socials. <br /> <br /> Keep Rising
+          🚀</p>
       </div>
 
       <div class="box">
-          <h3>quick links</h3>
-          <a href="/#home"><i class="fas fa-chevron-circle-right"></i> home</a>
-          <a href="/#about"><i class="fas fa-chevron-circle-right"></i> about</a>
-          <a href="/#skills"><i class="fas fa-chevron-circle-right"></i> skills</a>
-          <a href="/#education"><i class="fas fa-chevron-circle-right"></i> education</a>
-          <a href="/#work"><i class="fas fa-chevron-circle-right"></i> work</a>
-          <a href="/#experience"><i class="fas fa-chevron-circle-right"></i> experience</a>
+        <h3>quick links</h3>
+        <a href="/#home"><i class="fas fa-chevron-circle-right"></i> home</a>
+        <a href="/#about"><i class="fas fa-chevron-circle-right"></i> about</a>
+        <a href="/#skills"><i class="fas fa-chevron-circle-right"></i> skills</a>
+        <a href="/#education"><i class="fas fa-chevron-circle-right"></i> education</a>
+        <a href="/#work"><i class="fas fa-chevron-circle-right"></i> projects</a>
+        <a href="/experience"><i class="fas fa-chevron-circle-right"></i> experience</a>
       </div>
 
       <div class="box">
-          <h3>contact info</h3>
-          <p> <i class="fas fa-phone"></i>+91 704-302-4736</p>
-          <p> <i class="fas fa-envelope"></i>jigarsable21@gmail.com</p>
-          <p> <i class="fas fa-map-marked-alt"></i>Pune, India-412206</p>
-          <div class="share">
-
-            <a href="https://www.linkedin.com/in/jigar-sable" class="fab fa-linkedin" target="_blank"></a>
-            <a href="https://github.com/jigar-sable" class="fab fa-github" target="_blank"></a>
-            <a href="mailto:jigarsable21@gmail.com" class="fas fa-envelope" target="_blank"></a>
-            <a href="https://twitter.com/jigar_sable" class="fab fa-twitter" target="_blank"></a>
-            <a href="https://t.me/lifecode5" class="fab fa-telegram-plane" target="_blank"></a>
-          </div>
+        <h3>contact info</h3>
+        <p> <i class="fas fa-phone"></i>+91-6281580507</p>
+        <p> <i class="fas fa-envelope"></i>kishorekorada55@gmail.com</p>
+        <p> <i class="fas fa-map-marked-alt"></i>Visakhapatnam, AP, India</p>
+        <div class="share">
+          <a href="https://www.linkedin.com/in/kishorekorada78/" class="fab fa-linkedin" aria-label="LinkedIn"
+            target="_blank"></a>
+          <a href="https://github.com/Kishorekorada78" class="fab fa-github" aria-label="GitHub" target="_blank"></a>
+          <a href="mailto:kishorekorada55@gmail.com" class="fas fa-envelope" aria-label="Email" target="_blank"></a>
+          <a href="https://leetcode.com/u/Korada_Kishore/" class="fas fa-code" aria-label="LeetCode"
+            target="_blank"></a>
+          <a href="https://www.geeksforgeeks.org/user/koradakis72c5/" class="fas fa-terminal" aria-label="GeeksForGeeks"
+            target="_blank"></a>
+        </div>
       </div>
-  </div>
+    </div>
 
-  <h1 class="credit">Designed with <i class="fa fa-heart pulse"></i> by <a href="https://www.linkedin.com/in/jigar-sable"> jigar sable</a></h1>
+    <h1 class="credit">Designed with <i class="fa fa-heart pulse"></i> by Kishore Korada</h1>
 
-</section>
-<!-- footer section ends -->
+  </section>
+  <!-- footer section ends -->
 
-<!-- scroll top btn -->
-<a href="#experience" class="fas fa-angle-up" id="scroll-top"></a>
-<!-- scroll back to top -->
+  <!-- scroll top btn -->
+  <a href="#experience" class="fas fa-angle-up" id="scroll-top"></a>
+  <!-- scroll back to top -->
 
+  <!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
 
-<!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
-<!-- jquery cdn -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<!-- scroll reveal anim -->
-<script src="https://unpkg.com/scrollreveal"></script>
-<!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
-
-<script src="./script.js"></script>
+  <script src="/experience/script.js"></script>
+  <script src="./script.js"></script>
 
 </body>
+
 </html>

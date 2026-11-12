@@ -1,29 +1,29 @@
-[{
-        "name": "Library Management System",
-        "desc": "Team project where I worked as a frontend developer. Built a responsive UI for book requests, issue tracking, and navigation using HTML, CSS, JavaScript, and Figma.",
-        "image": "lms",
-        "category": "basicweb",
-        "links": {
-            "code": "https://github.com/Lavanya595/LMS_software"
-        }
-    },
-    {
-        "name": "Vehicle Number Plate Detector",
-        "desc": "Python-OpenCV project to detect and extract vehicle number plates. Integrated Excel logging for automatic registration detail storage, useful in surveillance and security.",
-        "image": "numberplate",
-        "category": "lamp",
-        "links": {
-            "code": "https://github.com/Lavanya595/security_system"
-        }
-    },
-    {
-        "name": "Women Safety Detector",
-        "desc": "IoT-based project using Raspberry Pi, touch sensor, LED, buzzer, and Twilio API. Sends SMS alerts and activates buzzer + LED when triggered for real-time safety applications.",
-        "image": "projectiot",
-        "category": "lamp",
-        "links": {
-            "code": "https://github.com/Lavanya595/Women-Safety-Detector-IoT"
-        }
+[
+  {
+    "name": "SmartMeet.ai",
+    "desc": "AI-powered real-time video conferencing platform built with Spring Boot, React, WebRTC, and STOMP/WebSocket. Features low-latency audio/video, screen sharing, meeting scheduling, host moderation, JWT + OAuth2 authentication, and AI-driven focus and sentiment analytics.",
+    "image": "webchat",
+    "category": "fullstack",
+    "links": {
+      "code": "https://github.com/Kishorekorada78"
     }
-
+  },
+  {
+    "name": "Task Management System API",
+    "desc": "RESTful Task Management API engineered with Java, Spring Boot, and MySQL. Features full CRUD operations, pagination, input validation, role-based access control (USER/ADMIN), JWT, Google OAuth2, and Refresh Tokens with complete Swagger/OpenAPI documentation and JUnit 5/Mockito test coverage.",
+    "image": "issuetrack",
+    "category": "backend",
+    "links": {
+      "code": "https://github.com/Kishorekorada78"
+    }
+  },
+  {
+    "name": "TripNest (Infosys Springboard)",
+    "desc": "Full-stack travel planning platform developed using Java, Spring Boot, React.js, and MySQL. Implemented 20+ secure RESTful API endpoints for trip, itinerary, expense, collaboration, and user modules with AI-assisted recommendations and automated trip notes.",
+    "image": "saas",
+    "category": "fullstack",
+    "links": {
+      "code": "https://github.com/Kishorekorada78"
+    }
+  }
 ]

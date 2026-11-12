@@ -1,4 +1,11 @@
+let headerGlassInstance = null;
+let isSmoothScrolling = false;
+let currentActiveSectionId = 'home';
+
 $(document).ready(function() {
+
+    // Initialize Header Glass Tabs
+    headerGlassInstance = initGlassTabs('#headerGlassTrack');
 
     $('#menu').click(function() {
         $(this).toggleClass('fa-times');
@@ -15,26 +22,55 @@ $(document).ready(function() {
             document.querySelector('#scroll-top').classList.remove('active');
         }
 
-        // scroll spy
-        $('section').each(function() {
-            let height = $(this).height();
-            let offset = $(this).offset().top - 200;
+        // scroll spy (only when not programmatic smooth scrolling from a tab click)
+        if (!isSmoothScrolling) {
             let top = $(window).scrollTop();
-            let id = $(this).attr('id');
+            let newSectionId = '';
 
-            if (top > offset && top < offset + height) {
-                $('.navbar ul li a').removeClass('active');
-                $('.navbar').find(`[href="#${id}"]`).addClass('active');
+            $('section').each(function() {
+                let height = $(this).outerHeight();
+                let offset = $(this).offset().top - 140;
+                let id = $(this).attr('id');
+
+                if (top >= offset && top < offset + height) {
+                    newSectionId = id;
+                }
+            });
+
+            if (newSectionId && newSectionId !== currentActiveSectionId) {
+                currentActiveSectionId = newSectionId;
+                const activeTab = document.querySelector(`.navbar ul.header-glass-track a[href="#${newSectionId}"]`);
+                if (activeTab && headerGlassInstance) {
+                    headerGlassInstance.moveToTab(activeTab, true);
+                }
             }
-        });
+        }
     });
 
-    // smooth scrolling
+    // smooth scrolling for all anchor links
     $('a[href*="#"]').on('click', function(e) {
-        e.preventDefault();
-        $('html, body').animate({
-            scrollTop: $($(this).attr('href')).offset().top,
-        }, 500, 'linear')
+        const href = $(this).attr('href');
+        const hash = href.slice(href.indexOf('#'));
+        const $target = $(hash);
+
+        if ($target.length) {
+            e.preventDefault();
+            isSmoothScrolling = true;
+            currentActiveSectionId = hash.replace('#', '');
+
+            const navTab = document.querySelector(`.navbar ul.header-glass-track a[href="${hash}"]`);
+            if (navTab && headerGlassInstance) {
+                headerGlassInstance.moveToTab(navTab, true);
+            }
+
+            $('html, body').stop().animate({
+                scrollTop: $target.offset().top - 65,
+            }, 550, 'swing', function() {
+                setTimeout(function() {
+                    isSmoothScrolling = false;
+                }, 80);
+            });
+        }
     });
 
     // <!-- emailjs to mail contact form data -->
@@ -59,7 +95,7 @@ $(document).ready(function() {
 document.addEventListener('visibilitychange',
     function() {
         if (document.visibilityState === "visible") {
-            document.title = "Portfolio | Gurram Lavanya";
+            document.title = "Portfolio | Korada Kishore";
             $("#favicon").attr("href", "assets/images/favicon.png");
         } else {
             document.title = "Come Back To Portfolio";
@@ -70,7 +106,7 @@ document.addEventListener('visibilitychange',
 
 // <!-- typed js effect starts -->
 var typed = new Typed(".typing-text", {
-    strings: ["frontend development", "UI/UX wire frames", "web designing", "web development", "Full stack"],
+    strings: ["Java Backend Development", "Spring Boot & REST APIs", "Microservices Architecture", "Full Stack Development"],
     loop: true,
     typeSpeed: 50,
     backSpeed: 25,
@@ -102,54 +138,194 @@ function showSkills(skills) {
     skillsContainer.innerHTML = skillHTML;
 }
 
-function showProjects(projects) {
-    let projectsContainer = document.querySelector("#work .box-container");
-    let projectHTML = "";
-    projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
-        projectHTML += `
-        <div class="box tilt">
-      <img draggable="false" src="./assets/images/projects/${project.image}.png" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>`
+function initProjectCards() {
+    const cards = document.querySelectorAll('.project-card');
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+    cards.forEach(card => {
+        let enterTimer = null;
+        let leaveTimer = null;
+
+        // Hover-intent delay on desktop: 150ms before flipping, 200ms grace period on mouseleave
+        if (!isTouch) {
+            card.addEventListener('mouseenter', function() {
+                clearTimeout(leaveTimer);
+                enterTimer = setTimeout(() => {
+                    cards.forEach(c => {
+                        if (c !== card) c.classList.remove('is-flipped');
+                    });
+                    card.classList.add('is-flipped');
+                }, 150);
+            });
+
+            card.addEventListener('mouseleave', function() {
+                clearTimeout(enterTimer);
+                leaveTimer = setTimeout(() => {
+                    card.classList.remove('is-flipped');
+                }, 200);
+            });
+        }
+
+        // Tap or click on card
+        card.addEventListener('click', function(e) {
+            // Never block or interfere with GitHub link clicks
+            if (e.target.closest('a')) {
+                return;
+            }
+            // Close button inside card
+            if (e.target.closest('.back-close-btn')) {
+                card.classList.remove('is-flipped');
+                return;
+            }
+            // On touch devices: flip on tap only
+            if (isTouch) {
+                const isFlipped = card.classList.contains('is-flipped');
+                cards.forEach(c => c.classList.remove('is-flipped'));
+                if (!isFlipped) {
+                    card.classList.add('is-flipped');
+                }
+            }
+        });
+
+        // Close button on back of card
+        const closeBtn = card.querySelector('.back-close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                card.classList.remove('is-flipped');
+            });
+        }
     });
-    projectsContainer.innerHTML = projectHTML;
 
-    // <!-- tilt js effect starts  -- <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>-->
-    VanillaTilt.init(document.querySelectorAll(".tilt"), {
-        max: 15,
-    });
-    // <!-- tilt js effect ends -->
-
-    /* ===== SCROLL REVEAL ANIMATION ===== */
-    const srtop = ScrollReveal({
-        origin: 'top',
-        distance: '80px',
-        duration: 1000,
-        reset: true
+    // Close flipped cards when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.project-card')) {
+            cards.forEach(c => c.classList.remove('is-flipped'));
+        }
     });
 
-    /* SCROLL PROJECTS */
-    srtop.reveal('.work .box', { interval: 200 });
+    /* ===== SCROLL REVEAL ANIMATION FOR PROJECT CARDS ===== */
+    if (typeof ScrollReveal !== 'undefined') {
+        const srtop = ScrollReveal({
+            origin: 'top',
+            distance: '80px',
+            duration: 1000,
+            reset: true
+        });
+        srtop.reveal('.work .project-card', { interval: 200 });
+    }
+}
 
+/* ============================================================
+   Liquid Glass Tabs Component Engine (Scrolltide Physics)
+   ============================================================ */
+function initGlassTabs(trackSelector, onTabChange) {
+    const track = document.querySelector(trackSelector);
+    if (!track) return null;
+
+    const lens = track.querySelector('.glass-lens');
+    const tabs = track.querySelectorAll('.glass-tab');
+    if (!lens || !tabs.length) return null;
+
+    let currentIndex = 0;
+    let currentX = 0;
+
+    function moveToTab(targetTab, animate = true) {
+        if (!targetTab) return;
+
+        // Skip animated lens if on mobile drawer where lens is hidden
+        if (window.innerWidth <= 768) {
+            tabs.forEach(t => {
+                t.classList.remove('active', 'is-active', 'is-checked');
+                t.setAttribute('aria-selected', 'false');
+            });
+            targetTab.classList.add('active', 'is-active', 'is-checked');
+            targetTab.setAttribute('aria-selected', 'true');
+            if (typeof onTabChange === 'function') onTabChange(targetTab);
+            return;
+        }
+
+        const trackRect = track.getBoundingClientRect();
+        const tabRect = targetTab.getBoundingClientRect();
+        const targetX = tabRect.left - trackRect.left;
+        const targetWidth = tabRect.width;
+
+        const newIndex = Array.from(tabs).indexOf(targetTab);
+        const movingRight = newIndex >= currentIndex;
+        const isIndexChange = newIndex !== currentIndex;
+
+        tabs.forEach(t => {
+            t.classList.remove('active', 'is-active', 'is-checked');
+            t.setAttribute('aria-selected', 'false');
+        });
+        targetTab.classList.add('active', 'is-active', 'is-checked');
+        targetTab.setAttribute('aria-selected', 'true');
+
+        if (animate && isIndexChange) {
+            lens.classList.remove('wobbling-right', 'wobbling-left');
+            void lens.offsetWidth; // force reflow
+
+            lens.style.setProperty('--start-x', `${currentX}px`);
+            lens.style.setProperty('--target-x', `${targetX}px`);
+            const transitX = movingRight 
+                ? targetX - (tabRect.width * 0.22) 
+                : targetX + (tabRect.width * 0.22);
+            lens.style.setProperty('--transit-x', `${transitX}px`);
+
+            lens.style.width = `${targetWidth}px`;
+            lens.classList.add(movingRight ? 'wobbling-right' : 'wobbling-left');
+
+            const glint = lens.querySelector('.glass-lens-glint');
+            if (glint) {
+                glint.style.filter = 'brightness(1.6) contrast(1.3)';
+                setTimeout(() => { if (glint) glint.style.filter = ''; }, 580);
+            }
+        } else {
+            lens.style.transform = `translateX(${targetX}px)`;
+            lens.style.width = `${targetWidth}px`;
+        }
+
+        currentX = targetX;
+        currentIndex = newIndex;
+
+        if (typeof onTabChange === 'function') {
+            onTabChange(targetTab);
+        }
+    }
+
+    // Initialize position after fonts load / layout settles
+    const initialActive = track.querySelector('.glass-tab.active, .glass-tab.is-active') || tabs[0];
+    setTimeout(() => moveToTab(initialActive, false), 80);
+    window.addEventListener('load', () => moveToTab(initialActive, false));
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            // If in-page anchor, move immediately
+            if (href && href.startsWith('#')) {
+                moveToTab(this, true);
+            }
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        const active = track.querySelector('.glass-tab.active, .glass-tab.is-active') || tabs[0];
+        if (active) moveToTab(active, false);
+    });
+
+    return {
+        moveToTab,
+        track,
+        lens
+    };
 }
 
 fetchData().then(data => {
     showSkills(data);
 });
 
-fetchData("projects").then(data => {
-    showProjects(data);
-});
+// Initialize 3D wave project cards
+initProjectCards();
 
 // <!-- tilt js effect starts -->
 VanillaTilt.init(document.querySelectorAll(".tilt"), {
@@ -232,6 +408,7 @@ srtop.reveal('.about .content .resumebtn', { delay: 200 });
 
 
 /* SCROLL SKILLS */
+srtop.reveal('.skills-categories .skill-category-card', { interval: 150 });
 srtop.reveal('.skills .container', { interval: 200 });
 srtop.reveal('.skills .container .bar', { delay: 400 });
 
