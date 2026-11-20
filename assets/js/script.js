@@ -152,71 +152,131 @@ const FEATURED_PROJECTS_DATA = {
         title: "AI Voice Assistant",
         longDescription: "The Spring AI Voice Assistant is an end-to-end conversational voice system engineered with Spring Boot, Spring AI (ChatClient & ChatMemory Advisor), and Google's Gemini multimodal models. Users interact via speech-to-text audio input, receive token-streamed responses with persistent context memory, and listen to synthesized speech replies with zero waiting time. Built with native Web Audio streaming and robust REST endpoints.",
         image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=800&q=80",
-        techStack: ["Java 17", "Spring Boot", "Spring AI", "Gemini API", "Web Audio API", "WebSockets"],
+        techStack: [
+            "Java 17",
+            "Spring Boot 3",
+            "Spring AI",
+            "Google Gemini API",
+            "Web Audio API",
+            "STT (Speech-to-Text)",
+            "TTS (Text-to-Speech)",
+            "ChatClient",
+            "ChatMemory Advisor",
+            "WebSockets",
+            "Server-Sent Events (SSE)",
+            "Maven",
+            "JavaScript"
+        ],
         features: [
             "Real-time speech-to-text transcription with Web Audio mic capture",
             "Low-latency token-streamed chat replies with conversation memory advisors",
             "Hands-free voice mode that listens, thinks and speaks automatically",
             "Multi-voice text-to-speech audio synthesis with instant audio playback"
         ],
-        githubUrl: "https://github.com/Kishorekorada78/Ai-Voice-Assistent",
-        liveUrl: "https://github.com/Kishorekorada78/Ai-Voice-Assistent"
+        githubUrl: "https://github.com/Kishorekorada78/Ai-Voice-Assistent"
     },
     "smartmeet-ai": {
         title: "SmartMeet.ai",
         longDescription: "SmartMeet.ai is a next-generation real-time video meeting and collaboration suite designed for high-concurrency communications. Built with WebRTC peer-to-peer audio/video streaming, Spring Boot WebSocket/STOMP signaling, host moderation, screen sharing, meeting scheduling, and AI-driven attention analytics to detect participant engagement and sentiment during conferences.",
         image: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=800&q=80",
-        techStack: ["Java", "Spring Boot", "React.js", "WebRTC", "WebSocket/STOMP", "JWT & OAuth2"],
+        techStack: [
+            "Java",
+            "Spring Boot",
+            "React.js",
+            "WebRTC (Audio/Video)",
+            "WebSocket & STOMP",
+            "Spring Security",
+            "JWT Authentication",
+            "Google OAuth2 Login",
+            "MySQL Database",
+            "HTML5 / CSS3",
+            "Maven",
+            "AI Sentiment Analytics"
+        ],
         features: [
             "Sub-second low-latency WebRTC peer-to-peer audio and HD video calls",
             "Real-time STOMP WebSocket signaling and interactive live meeting chat",
             "Secure host moderation, waiting room, screen sharing and meeting recording",
             "JWT authentication, Google OAuth2 integration, and participant analytics"
         ],
-        githubUrl: "https://github.com/Kishorekorada78/Smartmeet.ai",
-        liveUrl: "https://github.com/Kishorekorada78/Smartmeet.ai"
+        githubUrl: "https://github.com/Kishorekorada78/Smartmeet.ai"
     },
     "food-risk-analysis": {
         title: "Food Risk Analysis",
         longDescription: "The Food Risk Analysis System is an enterprise data-driven risk management platform designed to monitor, evaluate, and forecast food safety hazards across agricultural and supply-chain workflows. Built with scalable REST microservices, automated compliance checklists, multi-factor anomaly scoring, and comprehensive dashboard reporting to alert safety officers before contamination events escalate.",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-        techStack: ["Java", "Spring Boot", "REST APIs", "MySQL", "Data Analytics", "Spring Security"],
+        techStack: [
+            "Java",
+            "Spring Boot",
+            "RESTful Microservices",
+            "Spring Data JPA",
+            "Hibernate ORM",
+            "MySQL Database",
+            "Data Analytics & Scoring",
+            "Spring Security",
+            "Maven",
+            "Chart.js / Dashboards"
+        ],
         features: [
             "Automated hazard index scoring and multi-factor contamination risk prediction",
             "Comprehensive inspection compliance tracking with historical trend analytics",
             "Early-warning alert dispatching for high-risk supply-chain batches",
             "Interactive data reporting dashboards with role-based access security"
         ],
-        githubUrl: "https://github.com/Kishorekorada78/Food-Risk-Analysis",
-        liveUrl: "https://github.com/Kishorekorada78/Food-Risk-Analysis"
+        githubUrl: "https://github.com/Kishorekorada78/Food-Risk-Analysis"
     },
     "task-management-system-api": {
         title: "Task Management System API",
         longDescription: "A secure, enterprise-grade RESTful Task Management System API built on Spring Boot and MySQL. It features fine-grained Role-Based Access Control (RBAC), method-level security with Spring Security, Google OAuth2 login, JWT token generation with refresh token rotation and revocation, transactional CRUD task operations, dynamic pagination, input validation, and full Swagger/OpenAPI documentation.",
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-        techStack: ["Java 17", "Spring Boot", "Spring Security", "JWT & OAuth2", "MySQL", "Swagger/OpenAPI"],
+        techStack: [
+            "Java 17",
+            "Spring Boot",
+            "Spring Security",
+            "Spring Data JPA",
+            "Hibernate ORM",
+            "MySQL Database",
+            "JWT Access Tokens",
+            "Refresh Token Rotation",
+            "Google OAuth2 Login",
+            "BCrypt Encryption",
+            "Swagger / OpenAPI 3.0",
+            "JUnit 5 / Mockito",
+            "Maven",
+            "Lombok"
+        ],
         features: [
             "Stateless JWT authentication with refresh token revocation & BCrypt hashing",
             "Google OAuth2 single sign-on and role-based permissions (USER / ADMIN)",
             "Complete task lifecycle CRUD operations with user ownership validation",
             "Dynamic pagination, global exception handling, and OpenAPI interactive testing"
         ],
-        githubUrl: "https://github.com/Kishorekorada78/Task-Management-System-API",
-        liveUrl: "https://github.com/Kishorekorada78/Task-Management-System-API"
+        githubUrl: "https://github.com/Kishorekorada78/Task-Management-System-API"
     },
     "fraud-copilot": {
         title: "Fraud Copilot",
         longDescription: "Fraud Copilot is an intelligent investigation assistant powered by Spring AI and local Ollama LLMs that empowers credit card fraud analysts to identify impossible travel, flag transaction anomalies, and search enterprise fraud playbooks using vector RAG. The system executes deterministic Java calculation tools to guarantee mathematical precision, isolates case memory in PostgreSQL, masks card PII, and generates human-in-the-loop card block proposals.",
         image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
-        techStack: ["Java", "Spring Boot", "Spring AI", "Ollama LLM", "PostgreSQL / pgvector", "Docker Compose"],
+        techStack: [
+            "Java",
+            "Spring Boot",
+            "Spring AI",
+            "Ollama LLM (Llama 3.1)",
+            "PostgreSQL Database",
+            "pgvector Vector Store",
+            "RAG (Retrieval-Augmented Generation)",
+            "Vector Embeddings & Semantic Search",
+            "Deterministic Java Tools",
+            "Docker Compose",
+            "Human-in-the-Loop Workflow"
+        ],
         features: [
             "RAG retrieval from fraud investigation playbooks using vector embeddings",
             "Deterministic Java tool execution for impossible-travel speed and distance calculation",
             "Human-in-the-loop recommendation workflow: proposes card blocks for manual sign-off",
             "Automatic PII card number masking and persistent case-isolated conversation memory"
         ],
-        githubUrl: "https://github.com/Kishorekorada78/Fraud-Copilot",
-        liveUrl: "https://github.com/Kishorekorada78/Fraud-Copilot"
+        githubUrl: "https://github.com/Kishorekorada78/Fraud-Copilot"
     }
 };
 
@@ -228,7 +288,6 @@ function initProjectShowcase() {
     const modalLongDesc = document.getElementById('modalLongDesc');
     const modalTechStack = document.getElementById('modalTechStack');
     const modalFeaturesList = document.getElementById('modalFeaturesList');
-    const modalLiveDemoBtn = document.getElementById('modalLiveDemoBtn');
     const modalGithubBtn = document.getElementById('modalGithubBtn');
 
     if (!backdrop) return;
@@ -242,20 +301,21 @@ function initProjectShowcase() {
         modalTitle.textContent = project.title;
         modalLongDesc.textContent = project.longDescription;
 
-        // Render tech pills
+        // Render all clear technologies
         modalTechStack.innerHTML = project.techStack.map(t => `<span class="modal-tech-pill">${t}</span>`).join('');
 
         // Render feature bullets
         modalFeaturesList.innerHTML = project.features.map(f => `
             <li class="modal-feature-item">
-                <i class="fas fa-check-double"></i>
+                <i class="fas fa-check-double text-emerald-600"></i>
                 <span>${f}</span>
             </li>
         `).join('');
 
-        // URLs
-        modalLiveDemoBtn.href = project.liveUrl;
-        modalGithubBtn.href = project.githubUrl;
+        // GitHub Repository URL
+        if (modalGithubBtn) {
+            modalGithubBtn.href = project.githubUrl;
+        }
 
         backdrop.classList.add('is-open');
         backdrop.setAttribute('aria-hidden', 'false');
