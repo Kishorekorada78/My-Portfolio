@@ -27,15 +27,24 @@ $(document).ready(function() {
             let top = $(window).scrollTop();
             let newSectionId = '';
 
-            $('section').each(function() {
-                let height = $(this).outerHeight();
-                let offset = $(this).offset().top - 140;
-                let id = $(this).attr('id');
+            if (top < 80) {
+                newSectionId = 'home';
+            } else {
+                $('section[id]').each(function() {
+                    let height = $(this).outerHeight();
+                    let offset = $(this).offset().top - 140;
+                    let id = $(this).attr('id');
 
-                if (top >= offset && top < offset + height) {
-                    newSectionId = id;
+                    if (top >= offset && top < offset + height) {
+                        newSectionId = id;
+                    }
+                });
+
+                // If scrolled to the bottom of the page, activate the last section tab
+                if ($(window).scrollTop() + $(window).height() >= $(document).height() - 60) {
+                    newSectionId = 'achievements';
                 }
-            });
+            }
 
             if (newSectionId && newSectionId !== currentActiveSectionId) {
                 currentActiveSectionId = newSectionId;
@@ -261,6 +270,10 @@ function initGlassTabs(trackSelector, onTabChange) {
         targetTab.classList.add('active', 'is-active', 'is-checked');
         targetTab.setAttribute('aria-selected', 'true');
 
+        // Always update lens position and dimensions directly so it physically moves to the tab
+        lens.style.transform = `translateX(${targetX}px)`;
+        lens.style.width = `${targetWidth}px`;
+
         if (animate && isIndexChange) {
             lens.classList.remove('wobbling-right', 'wobbling-left');
             void lens.offsetWidth; // force reflow
@@ -272,7 +285,6 @@ function initGlassTabs(trackSelector, onTabChange) {
                 : targetX + (tabRect.width * 0.22);
             lens.style.setProperty('--transit-x', `${transitX}px`);
 
-            lens.style.width = `${targetWidth}px`;
             lens.classList.add(movingRight ? 'wobbling-right' : 'wobbling-left');
 
             const glint = lens.querySelector('.glass-lens-glint');
@@ -280,9 +292,8 @@ function initGlassTabs(trackSelector, onTabChange) {
                 glint.style.filter = 'brightness(1.6) contrast(1.3)';
                 setTimeout(() => { if (glint) glint.style.filter = ''; }, 580);
             }
-        } else {
-            lens.style.transform = `translateX(${targetX}px)`;
-            lens.style.width = `${targetWidth}px`;
+        } else if (!animate) {
+            lens.classList.remove('wobbling-right', 'wobbling-left');
         }
 
         currentX = targetX;
@@ -292,6 +303,10 @@ function initGlassTabs(trackSelector, onTabChange) {
             onTabChange(targetTab);
         }
     }
+
+    lens.addEventListener('animationend', function() {
+        lens.classList.remove('wobbling-right', 'wobbling-left');
+    });
 
     // Initialize position after fonts load / layout settles
     const initialActive = track.querySelector('.glass-tab.active, .glass-tab.is-active') || tabs[0];

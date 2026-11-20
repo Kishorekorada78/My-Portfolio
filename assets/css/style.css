@@ -274,12 +274,48 @@ header .navbar .glass-lens-glint::after {
 }
 
 /* Squeezes, Lands and Wobbles */
+@keyframes lensWobbleRight {
+    0% {
+        transform: translateX(var(--start-x, 0px)) scaleX(1) scaleY(1);
+    }
+    35% {
+        transform: translateX(var(--transit-x, var(--target-x, 0px))) scaleX(1.15) scaleY(0.88);
+    }
+    70% {
+        transform: translateX(var(--target-x, 0px)) scaleX(0.95) scaleY(1.05);
+    }
+    85% {
+        transform: translateX(var(--target-x, 0px)) scaleX(1.02) scaleY(0.98);
+    }
+    100% {
+        transform: translateX(var(--target-x, 0px)) scaleX(1) scaleY(1);
+    }
+}
+
+@keyframes lensWobbleLeft {
+    0% {
+        transform: translateX(var(--start-x, 0px)) scaleX(1) scaleY(1);
+    }
+    35% {
+        transform: translateX(var(--transit-x, var(--target-x, 0px))) scaleX(1.15) scaleY(0.88);
+    }
+    70% {
+        transform: translateX(var(--target-x, 0px)) scaleX(0.95) scaleY(1.05);
+    }
+    85% {
+        transform: translateX(var(--target-x, 0px)) scaleX(1.02) scaleY(0.98);
+    }
+    100% {
+        transform: translateX(var(--target-x, 0px)) scaleX(1) scaleY(1);
+    }
+}
+
 header .navbar .glass-lens.wobbling-right {
-    animation: lensWobbleRight 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: lensWobbleRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 header .navbar .glass-lens.wobbling-left {
-    animation: lensWobbleLeft 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: lensWobbleLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
