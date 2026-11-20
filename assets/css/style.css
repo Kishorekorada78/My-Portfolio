@@ -1362,10 +1362,10 @@ header .navbar .glass-lens.wobbling-left {
 .card-projects-list {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.75rem;
   overflow-y: auto;
   padding-right: 4px;
-  max-height: 340px;
+  max-height: 350px;
 }
 
 .card-projects-list::-webkit-scrollbar {
@@ -1387,8 +1387,8 @@ header .navbar .glass-lens.wobbling-left {
   border: 1.5px solid var(--blue);
   color: var(--blue);
   border-radius: 12px;
-  padding: 0.85rem 1.3rem;
-  font-size: 1.35rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.3rem;
   font-weight: 600;
   text-decoration: none;
   display: flex;
