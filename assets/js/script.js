@@ -147,81 +147,159 @@ function showSkills(skills) {
     skillsContainer.innerHTML = skillHTML;
 }
 
-function initProjectCards() {
-    const cards = document.querySelectorAll('.project-card');
-    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+const FEATURED_PROJECTS_DATA = {
+    "ai-voice-assistant": {
+        title: "AI Voice Assistant",
+        longDescription: "The Spring AI Voice Assistant is an end-to-end conversational voice system engineered with Spring Boot, Spring AI (ChatClient & ChatMemory Advisor), and Google's Gemini multimodal models. Users interact via speech-to-text audio input, receive token-streamed responses with persistent context memory, and listen to synthesized speech replies with zero waiting time. Built with native Web Audio streaming and robust REST endpoints.",
+        image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=800&q=80",
+        techStack: ["Java 17", "Spring Boot", "Spring AI", "Gemini API", "Web Audio API", "WebSockets"],
+        features: [
+            "Real-time speech-to-text transcription with Web Audio mic capture",
+            "Low-latency token-streamed chat replies with conversation memory advisors",
+            "Hands-free voice mode that listens, thinks and speaks automatically",
+            "Multi-voice text-to-speech audio synthesis with instant audio playback"
+        ],
+        githubUrl: "https://github.com/Kishorekorada78/Ai-Voice-Assistent",
+        liveUrl: "https://github.com/Kishorekorada78/Ai-Voice-Assistent"
+    },
+    "smartmeet-ai": {
+        title: "SmartMeet.ai",
+        longDescription: "SmartMeet.ai is a next-generation real-time video meeting and collaboration suite designed for high-concurrency communications. Built with WebRTC peer-to-peer audio/video streaming, Spring Boot WebSocket/STOMP signaling, host moderation, screen sharing, meeting scheduling, and AI-driven attention analytics to detect participant engagement and sentiment during conferences.",
+        image: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=800&q=80",
+        techStack: ["Java", "Spring Boot", "React.js", "WebRTC", "WebSocket/STOMP", "JWT & OAuth2"],
+        features: [
+            "Sub-second low-latency WebRTC peer-to-peer audio and HD video calls",
+            "Real-time STOMP WebSocket signaling and interactive live meeting chat",
+            "Secure host moderation, waiting room, screen sharing and meeting recording",
+            "JWT authentication, Google OAuth2 integration, and participant analytics"
+        ],
+        githubUrl: "https://github.com/Kishorekorada78/Smartmeet.ai",
+        liveUrl: "https://github.com/Kishorekorada78/Smartmeet.ai"
+    },
+    "food-risk-analysis": {
+        title: "Food Risk Analysis",
+        longDescription: "The Food Risk Analysis System is an enterprise data-driven risk management platform designed to monitor, evaluate, and forecast food safety hazards across agricultural and supply-chain workflows. Built with scalable REST microservices, automated compliance checklists, multi-factor anomaly scoring, and comprehensive dashboard reporting to alert safety officers before contamination events escalate.",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+        techStack: ["Java", "Spring Boot", "REST APIs", "MySQL", "Data Analytics", "Spring Security"],
+        features: [
+            "Automated hazard index scoring and multi-factor contamination risk prediction",
+            "Comprehensive inspection compliance tracking with historical trend analytics",
+            "Early-warning alert dispatching for high-risk supply-chain batches",
+            "Interactive data reporting dashboards with role-based access security"
+        ],
+        githubUrl: "https://github.com/Kishorekorada78/Food-Risk-Analysis",
+        liveUrl: "https://github.com/Kishorekorada78/Food-Risk-Analysis"
+    },
+    "task-management-system-api": {
+        title: "Task Management System API",
+        longDescription: "A secure, enterprise-grade RESTful Task Management System API built on Spring Boot and MySQL. It features fine-grained Role-Based Access Control (RBAC), method-level security with Spring Security, Google OAuth2 login, JWT token generation with refresh token rotation and revocation, transactional CRUD task operations, dynamic pagination, input validation, and full Swagger/OpenAPI documentation.",
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+        techStack: ["Java 17", "Spring Boot", "Spring Security", "JWT & OAuth2", "MySQL", "Swagger/OpenAPI"],
+        features: [
+            "Stateless JWT authentication with refresh token revocation & BCrypt hashing",
+            "Google OAuth2 single sign-on and role-based permissions (USER / ADMIN)",
+            "Complete task lifecycle CRUD operations with user ownership validation",
+            "Dynamic pagination, global exception handling, and OpenAPI interactive testing"
+        ],
+        githubUrl: "https://github.com/Kishorekorada78/Task-Management-System-API",
+        liveUrl: "https://github.com/Kishorekorada78/Task-Management-System-API"
+    },
+    "fraud-copilot": {
+        title: "Fraud Copilot",
+        longDescription: "Fraud Copilot is an intelligent investigation assistant powered by Spring AI and local Ollama LLMs that empowers credit card fraud analysts to identify impossible travel, flag transaction anomalies, and search enterprise fraud playbooks using vector RAG. The system executes deterministic Java calculation tools to guarantee mathematical precision, isolates case memory in PostgreSQL, masks card PII, and generates human-in-the-loop card block proposals.",
+        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+        techStack: ["Java", "Spring Boot", "Spring AI", "Ollama LLM", "PostgreSQL / pgvector", "Docker Compose"],
+        features: [
+            "RAG retrieval from fraud investigation playbooks using vector embeddings",
+            "Deterministic Java tool execution for impossible-travel speed and distance calculation",
+            "Human-in-the-loop recommendation workflow: proposes card blocks for manual sign-off",
+            "Automatic PII card number masking and persistent case-isolated conversation memory"
+        ],
+        githubUrl: "https://github.com/Kishorekorada78/Fraud-Copilot",
+        liveUrl: "https://github.com/Kishorekorada78/Fraud-Copilot"
+    }
+};
 
-    cards.forEach(card => {
-        let enterTimer = null;
-        let leaveTimer = null;
+function initProjectShowcase() {
+    const backdrop = document.getElementById('projectModalBackdrop');
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalLongDesc = document.getElementById('modalLongDesc');
+    const modalTechStack = document.getElementById('modalTechStack');
+    const modalFeaturesList = document.getElementById('modalFeaturesList');
+    const modalLiveDemoBtn = document.getElementById('modalLiveDemoBtn');
+    const modalGithubBtn = document.getElementById('modalGithubBtn');
 
-        // Hover-intent delay on desktop: 150ms before flipping, 200ms grace period on mouseleave
-        if (!isTouch) {
-            card.addEventListener('mouseenter', function() {
-                clearTimeout(leaveTimer);
-                enterTimer = setTimeout(() => {
-                    cards.forEach(c => {
-                        if (c !== card) c.classList.remove('is-flipped');
-                    });
-                    card.classList.add('is-flipped');
-                }, 150);
-            });
+    if (!backdrop) return;
 
-            card.addEventListener('mouseleave', function() {
-                clearTimeout(enterTimer);
-                leaveTimer = setTimeout(() => {
-                    card.classList.remove('is-flipped');
-                }, 200);
-            });
-        }
+    function openModal(projectId) {
+        const project = FEATURED_PROJECTS_DATA[projectId];
+        if (!project) return;
 
-        // Tap or click on card
-        card.addEventListener('click', function(e) {
-            // Never block or interfere with GitHub link clicks
-            if (e.target.closest('a')) {
-                return;
-            }
-            // Close button inside card
-            if (e.target.closest('.back-close-btn')) {
-                card.classList.remove('is-flipped');
-                return;
-            }
-            // On touch devices: flip on tap only
-            if (isTouch) {
-                const isFlipped = card.classList.contains('is-flipped');
-                cards.forEach(c => c.classList.remove('is-flipped'));
-                if (!isFlipped) {
-                    card.classList.add('is-flipped');
-                }
-            }
+        modalImg.src = project.image;
+        modalImg.alt = project.title;
+        modalTitle.textContent = project.title;
+        modalLongDesc.textContent = project.longDescription;
+
+        // Render tech pills
+        modalTechStack.innerHTML = project.techStack.map(t => `<span class="modal-tech-pill">${t}</span>`).join('');
+
+        // Render feature bullets
+        modalFeaturesList.innerHTML = project.features.map(f => `
+            <li class="modal-feature-item">
+                <i class="fas fa-check-double"></i>
+                <span>${f}</span>
+            </li>
+        `).join('');
+
+        // URLs
+        modalLiveDemoBtn.href = project.liveUrl;
+        modalGithubBtn.href = project.githubUrl;
+
+        backdrop.classList.add('is-open');
+        backdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        backdrop.classList.remove('is-open');
+        backdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.btn-view-details').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-project-id');
+            openModal(id);
         });
+    });
 
-        // Close button on back of card
-        const closeBtn = card.querySelector('.back-close-btn');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                card.classList.remove('is-flipped');
-            });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    backdrop.addEventListener('click', function(e) {
+        if (e.target === backdrop) {
+            closeModal();
         }
     });
 
-    // Close flipped cards when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.project-card')) {
-            cards.forEach(c => c.classList.remove('is-flipped'));
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
+            closeModal();
         }
     });
 
-    /* ===== SCROLL REVEAL ANIMATION FOR PROJECT CARDS ===== */
     if (typeof ScrollReveal !== 'undefined') {
         const srtop = ScrollReveal({
             origin: 'top',
-            distance: '80px',
-            duration: 1000,
+            distance: '60px',
+            duration: 900,
             reset: true
         });
-        srtop.reveal('.work .project-card', { interval: 200 });
+        srtop.reveal('.showcase-card', { interval: 150 });
     }
 }
 
@@ -339,8 +417,8 @@ fetchData().then(data => {
     showSkills(data);
 });
 
-// Initialize 3D wave project cards
-initProjectCards();
+// Initialize Showcase Project Modal & Cards
+initProjectShowcase();
 
 // <!-- tilt js effect starts -->
 VanillaTilt.init(document.querySelectorAll(".tilt"), {
